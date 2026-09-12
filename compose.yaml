@@ -8,6 +8,7 @@ services:
     restart: unless-stopped
     user: "1000:1000"
     read_only: true
+    working_dir: /workspace
     cap_drop:
       - ALL
     security_opt:
