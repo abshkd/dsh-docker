@@ -24,7 +24,7 @@ RUN npm ci --omit=dev \
     && npm cache clean --force
 
 ENV NODE_ENV=production \
-    HOME=/home/node \
+    HOME=/workspace \
     DSH_HOME=/home/node/.dsh \
     DSH_PERMISSION_MODE=workspace-write \
     DSH_TELEMETRY_MODE=DISABLED \

@@ -25,6 +25,8 @@ Two Docker volumes are created automatically:
 - `dsh-home` keeps sessions, settings, credentials, attachments, and installed profiles.
 - `dsh-workspace` is the only persistent work area the agent can modify.
 
+The container advertises `/workspace` as its home directory because the Harness workspace picker opens at `$HOME`. Harness state remains separately stored at `/home/node/.dsh`.
+
 Stopping or recreating the container keeps both volumes:
 
 ```sh
