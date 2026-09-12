@@ -1,0 +1,35 @@
+name: deepseek-harness
+
+services:
+  dsh:
+    build:
+      context: .
+    image: deepseek-harness-local:0.1.5-rc.1
+    restart: unless-stopped
+    user: "1000:1000"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 4g
+    cpus: 2.0
+    stop_grace_period: 10s
+    environment:
+      DSH_HOME: /home/node/.dsh
+      DSH_PERMISSION_MODE: workspace-write
+      DSH_TELEMETRY_MODE: DISABLED
+      DSH_TOOLS_MODE: native
+    ports:
+      - "127.0.0.1:3080:3080"
+    volumes:
+      - dsh-home:/home/node/.dsh
+      - dsh-workspace:/workspace
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=512m,mode=1777
+      - /run:rw,nosuid,nodev,size=16m,mode=755
+
+volumes:
+  dsh-home:
+  dsh-workspace:

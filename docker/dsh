@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+# The published Web profile mounts Cordis HMR, which currently requires this
+# Node flag. Keep it on the Harness process instead of exporting NODE_OPTIONS
+# into every command the agent starts.
+exec node --expose-internals /opt/dsh/node_modules/@deepseek-ai/dsh/lib/bin.js "$@"

@@ -1,0 +1,6 @@
+services:
+  dsh:
+    volumes:
+      - type: bind
+        source: ./workspace
+        target: /workspace

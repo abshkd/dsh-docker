@@ -1,0 +1,11 @@
+{
+  "name": "deepseek-harness-docker-runtime",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pinned runtime dependencies for the DeepSeek Harness container",
+  "license": "MIT",
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.5-rc.1",
+    "pnpm": "11.26.0"
+  }
+}

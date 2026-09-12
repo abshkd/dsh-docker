@@ -1,0 +1,8 @@
+.git
+.github
+.env
+.npm-cache
+.upstream-review
+workspace
+README.md
+compose*.yaml

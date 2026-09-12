@@ -1,0 +1,10 @@
+# Docker publishes this container port on the host's loopback interface only.
+# Binding all container interfaces is required for Docker's port forwarding;
+# it does not expose the service on the host LAN by itself.
+- id: webserver
+  config:
+    host: 0.0.0.0
+    port: !!js ctx.webStartup.port ?? 3080
+    compression: gzip
+    compressionLevel: 1
+    compressionThresholdBytes: 1024
