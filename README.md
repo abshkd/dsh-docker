@@ -1,5 +1,8 @@
 # DeepSeek Harness in Docker
 
+[![Build and publish](https://github.com/abshkd/dsh-docker/actions/workflows/docker-image.yml/badge.svg?branch=main&event=push)](https://github.com/abshkd/dsh-docker/actions/workflows/docker-image.yml)
+[![Docker pulls](https://img.shields.io/docker/pulls/abshkd/deepseek-harness?logo=docker)](https://hub.docker.com/r/abshkd/deepseek-harness)
+
 This unofficial community project runs [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) in a small, locked-down container. It is not affiliated with, endorsed by, or supported by DeepSeek. Sessions survive restarts, and the agent cannot see your host files unless you explicitly mount them.
 
 DeepSeek Harness is developer-preview software. The upstream project says it has not had a security audit. A container reduces risk, but it is not the same as a separate virtual machine.
@@ -9,7 +12,7 @@ DeepSeek Harness is developer-preview software. The upstream project says it has
 You need Docker with Docker Compose.
 
 ```sh
-docker compose build
+docker compose pull
 docker compose up -d
 docker compose logs -f dsh
 ```
@@ -58,11 +61,18 @@ Run one headless task with the same persistent data and workspace:
 docker compose run --rm --entrypoint dsh dsh --profile headless "inspect this workspace"
 ```
 
-Update the image after changing the pinned version in `package.json` and refreshing `package-lock.json`:
+Update to the newest published image:
+
+```sh
+docker compose pull
+docker compose up -d
+```
+
+To build the image locally instead, change the pinned version in `package.json`, refresh `package-lock.json`, and run:
 
 ```sh
 docker compose build --pull --no-cache
-docker compose up -d
+docker compose up -d --pull never
 ```
 
 The container also includes a patched pnpm release for optional Harness plugin management. It is intentionally newer than the vulnerable pnpm version named by the current upstream source tree.

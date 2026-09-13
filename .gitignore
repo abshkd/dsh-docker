@@ -3,5 +3,3 @@
 .upstream-review/
 workspace/*
 !workspace/.gitkeep
-.hot-plugins/*
-!hot-plugins/.gitkeep

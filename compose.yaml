@@ -4,7 +4,8 @@ services:
   dsh:
     build:
       context: .
-    image: deepseek-harness-local:0.1.5-rc.1
+    image: ${DSH_IMAGE:-abshkd/deepseek-harness:latest}
+    pull_policy: always
     restart: unless-stopped
     user: "1000:1000"
     read_only: true
